@@ -42,3 +42,20 @@
 .directory-source a{color:var(--green-dark);font-weight:800}
 [hidden]{display:none!important}
 @media(max-width:760px){.directory-header{display:block}.directory h2{font-size:46px}.directory-header p{font-size:16px}.map-button{margin-top:24px}.directory-controls{align-items:stretch;flex-direction:column;gap:10px}.directory-controls input{width:100%}.directory-controls #place-count{margin-left:0;text-align:left}.address-list{grid-template-columns:1fr}.district summary{font-size:20px}}
+
+/* Wyraźne odstępy między dzielnicami oraz adresami. */
+.districts{display:grid;gap:16px}
+.district{background:#fff;border:1px solid #d5e3cd;border-radius:8px;overflow:hidden}
+.district summary{padding:21px 24px}
+.district[open] summary{border-bottom:1px solid #e3ebdc;margin-bottom:16px}
+.address-list{padding:0 24px 24px;gap:14px}
+.address-item{background:#f8fbf4;min-height:78px;padding:17px 20px;align-items:flex-start;line-height:1.5;gap:24px}
+.address-item a{margin-top:2px}
+@media(max-width:760px){
+  .districts{gap:13px}
+  .district summary{padding:18px 17px}
+  .district[open] summary{margin-bottom:13px}
+  .address-list{padding:0 16px 18px;gap:11px}
+  .address-item{min-height:auto;padding:16px;flex-direction:column;gap:8px}
+  .address-item a{margin-top:0}
+}
