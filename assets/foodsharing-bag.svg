@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 620" role="img" aria-label="Torba z uratowanym jedzeniem">
+  <defs><filter id="shadow"><feDropShadow dx="9" dy="22" stdDeviation="17" flood-color="#49693d" flood-opacity=".20"/></filter></defs>
+  <ellipse cx="310" cy="570" rx="203" ry="25" fill="#bdcca9" opacity=".55"/>
+  <g transform="rotate(-10 280 280)">
+    <path d="M132 287c-8-47 1-97 38-126 30-24 67-22 90 10 22 31 25 70 26 115" fill="none" stroke="#315f38" stroke-width="26" stroke-linecap="round"/>
+    <path d="M144 284c-8-52 10-86 37-101 30-17 58 1 67 33" fill="none" stroke="#79a968" stroke-width="9" stroke-linecap="round"/>
+    <path d="M267 223c17-58 51-88 100-85 50 3 79 52 70 111" fill="none" stroke="#315f38" stroke-width="25" stroke-linecap="round"/>
+    <path d="M282 221c20-41 49-66 82-66 33 0 55 28 59 66" fill="none" stroke="#83ad71" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <g transform="rotate(11 210 220)"><path d="M115 319c-2-70 27-118 80-130 27-6 59 11 72 38l20 101Z" fill="#dfa251" stroke="#995c31" stroke-width="6"/><path d="M157 231c17 7 23 23 24 41m24-49c16 7 22 24 22 43" fill="none" stroke="#f7d39b" stroke-width="9" stroke-linecap="round"/></g>
+  <g><path d="M346 304c-37-77-17-145 26-170 20 28 15 61 7 78 29-31 61-35 83-10-10 39-44 64-76 75 38-10 72 0 81 29-24 30-67 39-121-2Z" fill="#5aa949" stroke="#2d7036" stroke-width="5"/><path d="M375 147c-9 65-12 110-10 161m-1-57c25-22 48-35 80-43m-81 65c-23-31-25-56-23-76" fill="none" stroke="#c8e6ad" stroke-width="7" stroke-linecap="round"/></g>
+  <g transform="rotate(-22 445 270)"><path d="M445 340c-11-8-48-83-45-109 4-30 36-39 56-20 18 18 6 88-11 129Z" fill="#ed8c4e" stroke="#b96330" stroke-width="6"/><path d="M426 210c-25-33-27-55-16-69 15 8 25 23 29 46 2-27 16-41 29-45 10 22 2 44-22 71" fill="#4d943e" stroke="#2d7036" stroke-width="5"/><path d="M420 241l35-8m-27 37 27-7m-20 33 15-6" stroke="#f9bd79" stroke-width="5" stroke-linecap="round"/></g>
+  <g filter="url(#shadow)"><path d="M104 278h414l-28 264c-3 25-20 42-45 42H179c-25 0-42-17-45-42L104 278Z" fill="#f7f0d9" stroke="#315f38" stroke-width="10"/><path d="M111 320h400" stroke="#d7d1b6" stroke-width="5"/><path d="M148 345h329l-18 184c-2 15-13 25-28 25H194c-15 0-26-10-28-25l-18-184Z" fill="#fffaf0"/>
+    <path d="M186 388c55-22 95 15 129 4 48-16 86-25 126-2" fill="none" stroke="#e1ecd0" stroke-width="11" stroke-linecap="round"/>
+    <text x="312" y="462" text-anchor="middle" fill="#315f38" font-family="Arial,sans-serif" font-size="38" font-weight="800" letter-spacing="-2">dobro krąży</text>
+    <path d="M241 485h142" stroke="#5ab948" stroke-width="6" stroke-linecap="round"/>
+    <text x="312" y="516" text-anchor="middle" fill="#6b765f" font-family="Arial,sans-serif" font-size="16" font-weight="700" letter-spacing="1">WEŹ · ZOSTAW · PODZIEL SIĘ</text>
+  </g>
+  <g><circle cx="109" cy="407" r="46" fill="#db6951" stroke="#a94b37" stroke-width="5"/><path d="M105 360c-8-25-2-38 10-46m-12 46c-16-13-31-12-39-4m39 4c17-13 30-11 39-4" fill="none" stroke="#418643" stroke-width="8" stroke-linecap="round"/><path d="M76 403c8-19 20-27 32-29" fill="none" stroke="#efa28d" stroke-width="6" stroke-linecap="round"/></g>
+  <path d="M505 463c21-34 45-44 68-34-4 30-23 48-68 34Z" fill="#70ae51"/><path d="M503 462c-11-28-6-52 13-69 13 26 9 49-13 69Z" fill="#8abe62"/>
+</svg>

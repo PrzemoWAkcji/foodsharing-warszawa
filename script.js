@@ -12,7 +12,7 @@ const districts = [...document.querySelectorAll('.district')];
 const normalize = value => value.toLocaleLowerCase('pl').normalize('NFD')
   .replace(/[\u0300-\u036f]/g, '').replace(/ł/g, 'l').trim();
 
-placeSearch.addEventListener('input', () => {
+placeSearch?.addEventListener('input', () => {
   const query = normalize(placeSearch.value);
   let visiblePlaces = 0;
   let visibleDistricts = 0;
