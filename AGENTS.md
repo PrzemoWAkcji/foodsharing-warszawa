@@ -3,3 +3,5 @@
 - Szablon jest statyczny i ma być dostępny w publicznym repozytorium oraz przez GitHub Pages do oceny. Dalsze zmiany i publikacja docelowej wersji wymagają weryfikacji treści.
 - Przed publikacją zweryfikować regulamin oraz adresy i godziny jadłodzielni. Nie dodawać niepotwierdzonych lokalizacji.
 - W nagłówku i stopce używać oficjalnego logo Foodsharing Polska zapisanego w `assets/foodsharing-polska.png`, pobranego z obecnej strony foodsharing.pl.
+- Główny zielony kolor marki to `#5AB948`, pobrany z logo. Ciemniejszy odcień stosować do drobnego tekstu i przycisków dla czytelności.
+- Spis jadłodzielni pochodzi z Warszawa 19115 (aktualizacja 22.10.2026); zawiera 46 punktów po pominięciu czasowo nieczynnego punktu przy ul. Kupieckiej 15. Przed zmianami zweryfikować aktualny wykaz i mapę miejską.
