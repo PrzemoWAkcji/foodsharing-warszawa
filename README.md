@@ -1,5 +1,7 @@
-<img src="assets/icon.svg" width="64" height="64" alt="">
+# Foodsharing Warszawa
 
-# FS
+Statyczny szablon strony gotowy do publikacji na GitHub Pages.
 
-Created in [T3 Code](https://t3.codes).
+Podgląd lokalny: `python3 -m http.server 8766`, następnie `http://localhost:8766`.
+
+Przed publikacją należy potwierdzić regulamin i uzupełnić aktualną listę jadłodzielni. Strona celowo nie podaje niezweryfikowanych adresów ani godzin otwarcia.
