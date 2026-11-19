@@ -10,4 +10,4 @@
 - Spis jadłodzielni pochodzi z Warszawa 19115 (aktualizacja 22.10.2026); zawiera 46 punktów po pominięciu czasowo nieczynnego punktu przy ul. Kupieckiej 15. Przed zmianami zweryfikować aktualny wykaz i mapę miejską.
 - W spisie zachować wyraźne odstępy między dzielnicami i adresami; na telefonie link do trasy umieszczać pod adresem.
 - Przycisk mapy używa publicznego linku udostępniania z miejskiego serwisu mapowego (`7848b568-32c7-4ee6-97d4-949eebce00ff?p=true`), w którym włączona jest tylko warstwa „Jadłodzielnie”. Widok sprawdzono w sesji incognito.
-- W stopkach strony głównej i podstrony Warszawy podawać autorstwo: „Projekt i wykonanie: IT TIMING”.
+- W stopkach strony głównej i podstrony Warszawy podawać autorstwo: „Projekt i wykonanie: IT TIMING”; nazwę firmy linkować do `https://it-timing.eu/`.
