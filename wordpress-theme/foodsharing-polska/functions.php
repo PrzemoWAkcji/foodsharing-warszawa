@@ -17,7 +17,7 @@ function foodsharing_assets(): void {
     $path = get_template_directory();
     wp_enqueue_style('foodsharing-fonts', $uri . '/fonts.css', [], filemtime($path . '/fonts.css'));
     wp_enqueue_style('foodsharing-style', get_stylesheet_uri(), ['foodsharing-fonts'], filemtime($path . '/style.css'));
-    if (is_front_page() || is_home() || is_archive() || is_search()) {
+    if (is_front_page() || is_home() || is_archive() || is_search() || is_page('aktualnosci')) {
         wp_enqueue_style('foodsharing-home', $uri . '/home.css', ['foodsharing-style'], filemtime($path . '/home.css'));
     }
     wp_enqueue_script('foodsharing-theme', $uri . '/theme.js', [], filemtime($path . '/theme.js'), true);
@@ -74,3 +74,10 @@ function foodsharing_article_image(int $post_id): string {
     }
     return '<img class="news-image" src="' . esc_url($image_url) . '" alt="' . esc_attr(get_the_title($post_id)) . '" width="768" height="384" loading="lazy">';
 }
+
+function foodsharing_filter_posts(WP_Query $query): void {
+    if (!is_admin() && $query->is_main_query() && $query->is_home()) {
+        $query->set('category_name', 'aktualnosci');
+    }
+}
+add_action('pre_get_posts', 'foodsharing_filter_posts');

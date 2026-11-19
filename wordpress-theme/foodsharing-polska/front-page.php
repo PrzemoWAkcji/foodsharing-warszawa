@@ -1,6 +1,7 @@
 <?php if (!defined('ABSPATH')) { exit; }
 $posts_page = (int) get_option('page_for_posts');
-$posts_url = $posts_page ? get_permalink($posts_page) : home_url('/#aktualnosci');
+$news_page = $posts_page ? get_post($posts_page) : get_page_by_path('aktualnosci');
+$posts_url = $news_page ? get_permalink($news_page) : home_url('/#aktualnosci');
 get_header(); ?>
 <main id="main">
     <section class="home-hero" aria-labelledby="home-title"><div class="wrap home-hero-grid">
@@ -21,10 +22,9 @@ get_header(); ?>
     <section class="section home-news" id="aktualnosci" aria-labelledby="news-title"><div class="wrap"><div class="news-heading"><div><span class="label">04 / Z życia Foodsharingu</span><h2 id="news-title">Aktualności <em>i historie.</em></h2></div><a href="<?php echo esc_url($posts_url); ?>">Wszystkie wpisy ↗</a></div>
       <div class="news-grid">
       <?php
-      $rules_post = get_page_by_path('regulamin', OBJECT, 'post');
       $news = new WP_Query([
           'post_type' => 'post', 'post_status' => 'publish', 'posts_per_page' => 3,
-          'ignore_sticky_posts' => true, 'post__not_in' => $rules_post ? [$rules_post->ID] : [],
+          'ignore_sticky_posts' => true, 'category_name' => 'aktualnosci',
       ]);
       ?>
       <?php if ($news->have_posts()) : while ($news->have_posts()) : $news->the_post(); ?>

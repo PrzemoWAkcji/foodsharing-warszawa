@@ -5,9 +5,9 @@ Statyczny podgląd projektu pozostaje w katalogu głównym repozytorium i na Git
 
 ## Co zawiera motyw
 
-- Stronę główną z obecnym układem i trzema najnowszymi wpisami WordPress (z pominięciem wpisu o slugu `regulamin`). Karty korzystają z obrazów wyróżniających; dla trzech wpisów obecnych w podglądzie dostępne są lokalne obrazy awaryjne.
+- Stronę główną z obecnym układem i trzema najnowszymi wpisami z kategorii WordPress `aktualnosci` (regulamin jest poza tą kategorią). Karty korzystają z obrazów wyróżniających; dla trzech wpisów obecnych w podglądzie dostępne są lokalne obrazy awaryjne.
 - Szablon strony o slugu `warszawa`: spis 46 jadłodzielni, wyszukiwarkę adresów, link do miejskiej mapy i zasady dzielenia.
-- Widoki zwykłych stron, wpisów, listy aktualności i strony 404.
+- Widoki zwykłych stron, wpisów, listy aktualności pod istniejącym adresem `/aktualnosci/` i strony 404.
 - Oficjalne logo, obrazy z artykułów i lokalnie hostowane czcionki z obsługą polskich znaków.
 
 ## Po uzyskaniu dostępu przez Novamira
