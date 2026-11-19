@@ -22,7 +22,7 @@
 .home-action-grid article{position:relative;min-height:345px;border:1px solid #d8decf;background:#fffdfa;padding:28px 28px 30px}
 .home-action-grid article:hover{border-color:#99c58e}
 .action-mark{display:grid;place-items:center;width:68px;height:68px;background:#e4f1d7;color:var(--green-dark);border-radius:50%;font:700 48px/1 'Barlow Semi Condensed',sans-serif}
-.action-num{position:absolute;right:28px;top:36px;color:#9ca497;font-size:13px;font-weight:800}
+.action-num{position:absolute;right:28px;top:36px;color:#66645a;font-size:13px;font-weight:800}
 .home-action-grid h3{font-size:30px;letter-spacing:-1px;line-height:1.1;margin:42px 0 14px}
 .home-action-grid p{color:#66675f;font-size:16px;line-height:1.7;margin:0}
 .home-how{background:#e9f0df}
@@ -72,7 +72,7 @@
 .news-read{margin:auto 25px 0;color:var(--green-dark);font-size:14px;font-weight:800;text-decoration:underline;text-underline-offset:4px}
 .home-join{background:var(--green);padding:100px 0;color:var(--brown)}
 .home-join-grid{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:end}
-.home-join .label{color:#1c4e1e}
+.home-join .label{color:#123a15}
 .home-join h2{margin-top:17px}
 .home-join h2 em{color:#1c4e1e}
 .home-join p{font-size:20px;line-height:1.6;max-width:500px}

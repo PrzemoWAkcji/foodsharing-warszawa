@@ -5,14 +5,15 @@
   <meta charset="<?php bloginfo('charset'); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#faf8f1">
-  <link rel="icon" href="<?php echo esc_url(get_template_directory_uri() . '/assets/foodsharing-polska.png'); ?>" type="image/png">
+  <?php if (!has_site_icon()) : ?><link rel="icon" href="<?php echo esc_url(get_template_directory_uri() . '/assets/icon-192.png'); ?>" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="<?php echo esc_url(get_template_directory_uri() . '/assets/apple-touch-icon.png'); ?>"><?php endif; ?>
   <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 <a class="skip" href="#main">Przejdź do treści</a>
 <header class="header" id="top"><div class="wrap header-inner">
-  <a href="<?php echo esc_url(home_url('/')); ?>" class="brand" aria-label="Foodsharing Polska — strona główna"><img src="<?php echo esc_url(get_template_directory_uri() . '/assets/foodsharing-polska.png'); ?>" alt="Foodsharing Polska" width="184" height="63"></a>
+  <a href="<?php echo esc_url(home_url('/')); ?>" class="brand" aria-label="Foodsharing Polska — strona główna"><img src="<?php echo esc_url(get_template_directory_uri() . '/assets/foodsharing-polska-368.webp'); ?>" alt="Foodsharing Polska" width="184" height="63" fetchpriority="high"></a>
   <button class="menu-toggle" type="button" aria-label="Otwórz menu" aria-controls="main-nav" aria-expanded="false"><span></span><span></span><span></span></button>
   <nav class="nav" id="main-nav" aria-label="Menu główne">
     <?php foodsharing_menus($warsaw ? 'warszawa' : 'home'); ?>

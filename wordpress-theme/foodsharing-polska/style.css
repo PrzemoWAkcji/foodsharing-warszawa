@@ -4,7 +4,7 @@ Theme URI: https://github.com/PrzemoWAkcji/foodsharing-warszawa
 Author: IT TIMING
 Author URI: https://it-timing.eu/
 Description: Motyw Foodsharing Polska z podstroną Warszawy.
-Version: 0.1.0
+Version: 0.2.0
 Requires at least: 6.2
 Requires PHP: 8.0
 Text Domain: foodsharing-polska
@@ -80,3 +80,5 @@ License: GPL-2.0-or-later
 @media(max-width:760px){.content-page{padding:45px 0 80px}.breadcrumbs{margin-bottom:32px}.content-header h1{letter-spacing:-1px}.entry-content{font-size:17px}}
 
 .nav-menu{display:flex;align-items:center;gap:27px;list-style:none;margin:0;padding:0}.nav-menu li{margin:0;padding:0}@media(max-width:760px){.nav-menu{display:flex;flex-direction:column;align-items:stretch;gap:0}.nav-menu li{width:100%}}
+/* Kontrast WCAG AA (19.11.2026) */
+.step-index{color:#66645a}.district-count{color:#4f6249}.join .label{color:#123a15}.footer-bottom{color:#5f5c51}

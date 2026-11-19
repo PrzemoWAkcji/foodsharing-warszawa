@@ -1,6 +1,6 @@
 <?php if (!defined('ABSPATH')) { exit; } $warsaw = is_page('warszawa'); $privacy_page = get_page_by_path('polityka-prywatnosci'); $privacy_url = get_privacy_policy_url() ?: ($privacy_page ? get_permalink($privacy_page) : ''); ?>
 <footer class="footer" id="kontakt"><div class="wrap footer-grid"><div>
-  <a href="<?php echo esc_url(home_url('/')); ?>" class="brand" aria-label="Foodsharing Polska — strona główna"><img src="<?php echo esc_url(get_template_directory_uri() . '/assets/foodsharing-polska.png'); ?>" alt="Foodsharing Polska" width="184" height="63"></a>
+  <a href="<?php echo esc_url(home_url('/')); ?>" class="brand" aria-label="Foodsharing Polska — strona główna"><img src="<?php echo esc_url(get_template_directory_uri() . '/assets/foodsharing-polska-368.webp'); ?>" alt="Foodsharing Polska" width="184" height="63" loading="lazy" decoding="async"></a>
   <p><?php echo $warsaw ? 'Dobre jedzenie lepiej smakuje, kiedy się nim dzielimy.' : 'Nie wyrzucaj. Podziel się.'; ?></p>
   <?php if (!$warsaw) : ?><div class="footer-social"><a href="https://www.facebook.com/FoodsharingPolska" target="_blank" rel="noopener noreferrer">Facebook ↗</a><a href="https://www.instagram.com/explore/tags/foodsharingpolska/" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div><?php endif; ?>
 </div><div class="contact"><h2>Kontakt</h2>
