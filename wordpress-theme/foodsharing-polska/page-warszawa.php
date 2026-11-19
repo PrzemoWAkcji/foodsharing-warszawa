@@ -5,11 +5,25 @@
 
     <section class="section how" id="jak-dzialamy"><div class="wrap"><div class="section-intro"><span class="label">01 / Co robimy</span><h2>Prosty pomysł.<br><em>Duża zmiana.</em></h2><p>Pełnowartościowe jedzenie nie musi się marnować. Pomagamy mu trafić tam, gdzie ktoś chętnie je przyjmie.</p></div><div class="steps"><article class="step"><span class="step-symbol">↙</span><span class="step-index">01</span><h3>Ratujemy</h3><p>Odbieramy nadwyżki ze sklepów, piekarni, warzywniaków, restauracji, kawiarni i stołówek.</p></article><article class="step"><span class="step-symbol">↔</span><span class="step-index">02</span><h3>Dzielimy się</h3><p>Przekazujemy uratowane jedzenie mieszkańcom Warszawy bezpośrednio, przez jadłodzielnie i podczas lokalnych wydarzeń.</p></article><article class="step"><span class="step-symbol">✳</span><span class="step-index">03</span><h3>Tworzymy miejsca</h3><p>Zakładamy ogólnodostępne jadłodzielnie: oznaczone lodówki i szafki, w których można zostawić lub odebrać jedzenie.</p></article></div></div></section>
 
-    <section class="section places" id="jadlodzielnie"><div class="wrap places-grid"><div class="places-art"><span class="places-arrow">↗</span><strong>weź, jeśli<br>potrzebujesz.<br><em>zostaw, jeśli<br>możesz.</em></strong><span class="places-star">✳</span></div><div class="places-copy"><span class="label">02 / Jadłodzielnie</span><h2>Miejsce dla <em>każdego.</em></h2><p>Jadłodzielnia to publiczna lodówka lub szafka, w której można bezpłatnie podzielić się jedzeniem albo się nim poczęstować. Nie trzeba niczego oddawać, żeby coś wziąć.</p><p>Niżej znajdziesz mapę i adresy z godzinami otwarcia. Wybierz dzielnicę lub wyszukaj ulicę, a przed wizytą upewnij się, że punkt jest czynny.</p><a class="btn btn-dark" href="#lista-jadlodzielni">Przejdź do spisu <span>↓</span></a></div></div></section>
+    <section class="section places" id="jadlodzielnie"><div class="wrap places-grid"><div class="places-art"><span class="places-arrow">↗</span><strong>weź, jeśli<br>potrzebujesz.<br><em>zostaw, jeśli<br>możesz.</em></strong><span class="places-star">✳</span></div><div class="places-copy"><span class="label">02 / Jadłodzielnie</span><h2>Miejsce dla <em>każdego.</em></h2><p>Jadłodzielnia to publiczna lodówka lub szafka, w której można bezpłatnie podzielić się jedzeniem albo się nim poczęstować. Nie trzeba niczego oddawać, żeby coś wziąć.</p><p>Niżej wybierzesz dzielnicę, a mapa jadłodzielni pokaże adresy z godzinami otwarcia. Przed wizytą upewnij się, że punkt jest czynny.</p><a class="btn btn-dark" href="#lista-jadlodzielni">Przejdź do spisu <span>↓</span></a></div></div></section>
 
     <section class="section directory" id="lista-jadlodzielni" aria-labelledby="directory-title"><div class="wrap">
-      <div class="directory-header"><div><span class="label">Znajdź miejsce blisko siebie</span><h2 id="directory-title">Jadłodzielnie <em>w Warszawie.</em></h2><p>Wybierz dzielnicę, wpisz ulicę albo kliknij „Najbliżej mnie”. Przy każdym punkcie podajemy godziny otwarcia z miejskiego wykazu.</p></div><a class="map-button" href="<?php echo esc_url(home_url('/jadlodzielnie/')); ?>"><span aria-hidden="true">⌖</span> Mapa całej Polski →</a></div>
-      <?php get_template_part('template-parts/points-directory', null, ['city' => 'Warszawa']); ?>
+      <?php
+      $fs_w = function_exists('fsj_get_points') ? array_values(array_filter(fsj_get_points(), static fn($p) => $p['c'] === 'Warszawa')) : [];
+      $fs_d = [];
+      foreach ($fs_w as $p) { if ($p['r'] !== '') { $fs_d[$p['r']] = ($fs_d[$p['r']] ?? 0) + 1; } }
+      if (class_exists('Collator')) { $fs_col = new Collator('pl_PL'); uksort($fs_d, [$fs_col, 'compare']); } else { ksort($fs_d); }
+      $fs_n = count($fs_w);
+      $fs_pl = static fn(int $n): string => $n === 1 ? 'punkt' : (($n % 10 >= 2 && $n % 10 <= 4 && ($n % 100 < 12 || $n % 100 > 14)) ? 'punkty' : 'punktów');
+      $fs_map = home_url('/jadlodzielnie/');
+      ?>
+      <div class="directory-header"><div><span class="label">Znajdź miejsce blisko siebie</span><h2 id="directory-title">Jadłodzielnie <em>w Warszawie.</em></h2><p>Warszawskie punkty z adresami, godzinami otwarcia i zdjęciami są na wspólnej mapie jadłodzielni w Polsce. Wybierz dzielnicę, a mapa pokaże punkty w okolicy.</p></div><a class="map-button" href="<?php echo esc_url(add_query_arg('szukaj', 'Warszawa', $fs_map) . '#fs-map'); ?>"><span aria-hidden="true">⌖</span> Pokaż Warszawę na mapie →</a></div>
+      <?php if ($fs_d) : ?>
+      <p class="w-districts-count"><?php echo (int) $fs_n . ' ' . esc_html($fs_pl($fs_n)) . ' w ' . count($fs_d) . ' ' . (count($fs_d) === 1 ? 'dzielnicy' : 'dzielnicach'); ?></p>
+      <ul class="w-districts">
+        <?php foreach ($fs_d as $name => $n) : ?><li><a href="<?php echo esc_url(add_query_arg('szukaj', 'Warszawa ' . $name, $fs_map) . '#fs-map'); ?>"><span><?php echo esc_html($name); ?></span><small><?php echo (int) $n . ' ' . esc_html($fs_pl($n)); ?></small></a></li><?php endforeach; ?>
+      </ul>
+      <?php endif; ?>
       <p class="directory-source">Źródło: <a href="https://warszawa19115.pl/web/guest/-/jadlodzielnie" target="_blank" rel="noopener noreferrer">Warszawa 19115 — wykaz jadłodzielni</a>, aktualizacja 22.10.2026. Punkt przy ul. Kupieckiej 15 pominięto, ponieważ w wykazie oznaczono go jako czasowo nieczynny. Zmianę adresu lub godzin zgłoś na <a href="mailto:polska@foodsharing.pl?subject=Mapa%20jad%C5%82odzielni%20%E2%80%93%20Warszawa">polska@foodsharing.pl</a>.</p>
     </div></section>
 

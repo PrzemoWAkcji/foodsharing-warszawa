@@ -8,7 +8,6 @@
   var search = document.getElementById('fs-search');
   var count = document.getElementById('fs-count');
   var near = document.getElementById('fs-near');
-  var onlyCity = el.dataset.city || '';
   var unitOne = count && count.dataset.unitOne || 'miejscowości', unitMany = count && count.dataset.unitMany || 'miejscowościach';
   var typeBoxes = Array.prototype.slice.call(document.querySelectorAll('.fs-type-filter input'));
   var map = null, cluster = null, markers = {}, data = {}, userMarker = null, started = false, pending = null;
@@ -64,9 +63,10 @@
     var q = fold(search ? search.value.trim() : '');
     var types = {};
     typeBoxes.forEach(function (b) { types[b.value] = b.checked; });
-    var ids = [];
+    var ids = [], words = q.split(/\s+/).filter(Boolean);
     items.forEach(function (li) {
-      var ok = types[li.dataset.type] !== false && (!q || li.dataset.search.indexOf(q) > -1);
+      var hay = li.dataset.search;
+      var ok = types[li.dataset.type] !== false && words.every(function (w) { return hay.indexOf(w) > -1; });
       li.hidden = !ok;
       if (ok) ids.push(li.dataset.id);
     });
@@ -147,7 +147,6 @@
           return L.divIcon({ html: '<span>' + n + '</span>', className: 'fs-cluster' + (n > 9 ? ' fs-cluster-big' : ''), iconSize: [40, 40] });
         }
       });
-      if (onlyCity) rows = rows.filter(function (p) { return p.c === onlyCity; });
       rows.forEach(function (p) {
         data[p.id] = p;
         var m = L.marker([p.a, p.o], { icon: icon(p.t), title: p.c + ' – ' + p.n, alt: p.c + ' – ' + p.n, keyboard: true });
@@ -155,8 +154,7 @@
         markers[p.id] = m;
       });
       map.addLayer(cluster);
-      apply(false);
-      if (onlyCity && rows.length) map.fitBounds(L.latLngBounds(rows.map(function (p) { return [p.a, p.o]; })).pad(0.05));
+      apply(!!(search && search.value.trim()));
       map.once('focus click', function () { map.scrollWheelZoom.enable(); });
       el.classList.add('is-ready');
       if (pending !== null) { showOnMap(pending); pending = null; }
@@ -173,6 +171,8 @@
     if (b) { start(); showOnMap(b.dataset.id); }
   });
   if (near) near.addEventListener('click', function () { start(); var wait = setInterval(function () { if (map) { clearInterval(wait); findNear(); } }, 100); });
+  var initial = new URLSearchParams(location.search).get('szukaj');
+  if (initial && search) search.value = initial.slice(0, 80);
   visibleIds();
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (en) { if (en[0].isIntersecting) { io.disconnect(); start(); } }, { rootMargin: '300px' });

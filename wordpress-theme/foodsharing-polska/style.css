@@ -4,7 +4,7 @@ Theme URI: https://github.com/PrzemoWAkcji/foodsharing-warszawa
 Author: IT TIMING
 Author URI: https://it-timing.eu/
 Description: Motyw Foodsharing Polska z podstroną Warszawy.
-Version: 0.5.0
+Version: 0.5.1
 Requires at least: 6.2
 Requires PHP: 8.0
 Text Domain: foodsharing-polska
@@ -82,3 +82,10 @@ License: GPL-2.0-or-later
 .nav-menu{display:flex;align-items:center;gap:27px;list-style:none;margin:0;padding:0}.nav-menu li{margin:0;padding:0}@media(max-width:760px){.nav-menu{display:flex;flex-direction:column;align-items:stretch;gap:0}.nav-menu li{width:100%}}
 /* Kontrast WCAG AA (19.11.2026) */
 .step-index{color:#66645a}.district-count{color:#4f6249}.join .label{color:#123a15}.footer-bottom{color:#5f5c51}
+/* Warszawa: dzielnice prowadzą do mapy ogólnopolskiej */
+.w-districts-count{margin:0 0 14px;font-size:14px;font-weight:700;color:#53634e}
+.w-districts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+.w-districts a{display:flex;align-items:baseline;justify-content:space-between;gap:12px;background:#fff;border:1px solid #d5e3cd;border-radius:8px;padding:15px 18px;text-decoration:none;font:700 20px 'Barlow Semi Condensed',sans-serif}
+.w-districts a:hover{border-color:var(--green);color:var(--green)}
+.w-districts a:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+.w-districts small{font:700 13px 'Source Sans 3',sans-serif;color:#4f6249;white-space:nowrap}
