@@ -21,12 +21,24 @@ function foodsharing_assets(): void {
         wp_enqueue_style('foodsharing-home', $uri . '/home.css', ['foodsharing-style'], filemtime($path . '/home.css'));
     }
     wp_enqueue_script('foodsharing-theme', $uri . '/theme.js', [], filemtime($path . '/theme.js'), true);
+    if (is_page('jadlodzielnie')) {
+        $vendor = $uri . '/assets/vendor/leaflet';
+        wp_enqueue_style('leaflet', $vendor . '/leaflet.css', [], '1.9.4');
+        wp_enqueue_style('leaflet-markercluster', $vendor . '/MarkerCluster.css', ['leaflet'], '1.5.3');
+        wp_enqueue_style('foodsharing-map', $uri . '/jadlodzielnie.css', ['foodsharing-style', 'leaflet'], filemtime($path . '/jadlodzielnie.css'));
+        wp_enqueue_script('leaflet', $vendor . '/leaflet.js', [], '1.9.4', ['in_footer' => true, 'strategy' => 'defer']);
+        wp_enqueue_script('leaflet-markercluster', $vendor . '/leaflet.markercluster.js', ['leaflet'], '1.5.3', ['in_footer' => true, 'strategy' => 'defer']);
+        wp_enqueue_script('foodsharing-map', $uri . '/jadlodzielnie.js', ['leaflet', 'leaflet-markercluster'], filemtime($path . '/jadlodzielnie.js'), ['in_footer' => true, 'strategy' => 'defer']);
+    }
 }
 add_action('wp_enqueue_scripts', 'foodsharing_assets');
 
 function foodsharing_preload_font(): void {
     $font = get_template_directory_uri() . '/fonts/barlow-800-latin.woff2';
     echo '<link rel="preload" href="' . esc_url($font) . '" as="font" type="font/woff2" crossorigin>' . "\n";
+    if (is_page('jadlodzielnie')) {
+        echo '<link rel="preconnect" href="https://tile.openstreetmap.org" crossorigin>' . "\n";
+    }
 }
 add_action('wp_head', 'foodsharing_preload_font', 1);
 
@@ -45,7 +57,7 @@ function foodsharing_menus(string $location): void {
     } else {
         $links = [
             [$prefix . '#o-nas', 'O nas'], [$prefix . '#jak-to-dziala', 'Jak to działa'],
-            [$prefix . '#miasta', 'Miasta'], [$prefix . '#aktualnosci', 'Aktualności'], [$prefix . '#kontakt', 'Kontakt'],
+            [home_url('/jadlodzielnie/'), 'Mapa jadłodzielni'], [$prefix . '#aktualnosci', 'Aktualności'], [$prefix . '#kontakt', 'Kontakt'],
         ];
     }
     foreach ($links as [$url, $label]) {
@@ -102,6 +114,9 @@ function foodsharing_meta_description(): string {
     }
     if (is_page('warszawa')) {
         return 'Jadłodzielnie w Warszawie: adresy według dzielnic, mapa punktów i zasady dzielenia się jedzeniem. Sprawdź, gdzie zostawić lub zabrać jedzenie.';
+    }
+    if (is_page('jadlodzielnie')) {
+        return 'Mapa jadłodzielni w Polsce: adresy lodówek i szafek społecznych w ponad 60 miejscowościach. Znajdź punkt najbliżej siebie i podziel się jedzeniem.';
     }
     if (is_page('aktualnosci') || is_home()) {
         return 'Aktualności Foodsharing Polska: nowe jadłodzielnie, wydarzenia i historie ludzi, którzy ratują jedzenie przed wyrzuceniem.';

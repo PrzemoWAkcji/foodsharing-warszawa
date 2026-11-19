@@ -42,7 +42,7 @@
 .home-quote p{color:#d6d2c8;font-size:17px;margin:0}
 .home-cities{background:#fffdfa}
 .home-cities .home-section-top{grid-template-columns:1fr .75fr}
-.city-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:20px}
+.city-grid{display:grid;grid-template-columns:1fr 1fr .85fr;gap:20px}
 .city-card{text-decoration:none;background:#e5f1d8;border:1px solid #d5e6c8;display:block;transition:transform .2s}
 .city-card:hover{transform:translateY(-5px)}
 .city-card-art{height:270px;position:relative;overflow:hidden;background:var(--green);display:grid;place-items:center}
@@ -82,7 +82,7 @@
 .join-email{font-size:15px;font-weight:800;text-underline-offset:5px}
 .footer-social{display:flex;gap:22px;margin-top:28px;font-size:14px;font-weight:800}
 .footer-social a{text-decoration:none}
-@media(max-width:1000px){.home-hero-grid{grid-template-columns:1fr 1fr}.home-hero-visual{transform:scale(.85)}.home-how-grid{gap:45px}.city-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:1000px){.home-hero-grid{grid-template-columns:1fr 1fr}.home-hero-visual{transform:scale(.85)}.home-how-grid{gap:45px}.city-grid{grid-template-columns:1fr 1fr}.city-invite{grid-column:1/-1}}
 @media(max-width:760px){
   .home-hero-grid,.home-section-top,.home-how-grid,.city-grid,.home-join-grid{display:block}
   .home-hero-copy{padding:65px 0 0}
@@ -111,3 +111,8 @@
   .home-join p{font-size:18px}
 }
 @media(max-width:420px){.home-hero-visual{transform:scale(.64);margin:-60px 0 -80px}.hero-stamp{right:-50px}.home-hero h1{font-size:58px}.home-ribbon span:nth-child(4){display:none}.home-how-list>div{grid-template-columns:35px 1fr;gap:15px}.city-card-bottom{padding:22px}.city-art-text{font-size:46px}.city-invite{padding:28px}.home-news h2{font-size:43px}}
+.city-card-map .city-card-art{background:var(--green-dark)}
+.city-card-map .city-ring{border-color:#7fcf6c;box-shadow:0 0 0 55px #357a36,0 0 0 110px #3a823b}
+.city-card-map .city-art-text{color:#fff}
+.city-card-map .city-art-star{color:#9fdc8c}
+.city-card-map h3{line-height:1.1}
