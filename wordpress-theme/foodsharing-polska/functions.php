@@ -21,7 +21,7 @@ function foodsharing_assets(): void {
         wp_enqueue_style('foodsharing-home', $uri . '/home.css', ['foodsharing-style'], filemtime($path . '/home.css'));
     }
     wp_enqueue_script('foodsharing-theme', $uri . '/theme.js', [], filemtime($path . '/theme.js'), true);
-    if (is_page('jadlodzielnie')) {
+    if (is_page(['jadlodzielnie', 'warszawa'])) {
         $vendor = $uri . '/assets/vendor/leaflet';
         wp_enqueue_style('leaflet', $vendor . '/leaflet.css', [], '1.9.4');
         wp_enqueue_style('leaflet-markercluster', $vendor . '/MarkerCluster.css', ['leaflet'], '1.5.3');
@@ -36,7 +36,7 @@ add_action('wp_enqueue_scripts', 'foodsharing_assets');
 function foodsharing_preload_font(): void {
     $font = get_template_directory_uri() . '/fonts/barlow-800-latin.woff2';
     echo '<link rel="preload" href="' . esc_url($font) . '" as="font" type="font/woff2" crossorigin>' . "\n";
-    if (is_page('jadlodzielnie')) {
+    if (is_page(['jadlodzielnie', 'warszawa'])) {
         echo '<link rel="preconnect" href="https://tile.openstreetmap.org" crossorigin>' . "\n";
     }
 }

@@ -8,6 +8,8 @@
   var search = document.getElementById('fs-search');
   var count = document.getElementById('fs-count');
   var near = document.getElementById('fs-near');
+  var onlyCity = el.dataset.city || '';
+  var unitOne = count && count.dataset.unitOne || 'miejscowości', unitMany = count && count.dataset.unitMany || 'miejscowościach';
   var typeBoxes = Array.prototype.slice.call(document.querySelectorAll('.fs-type-filter input'));
   var map = null, cluster = null, markers = {}, data = {}, userMarker = null, started = false, pending = null;
 
@@ -74,7 +76,7 @@
       if (q) d.open = !!any;
     });
     var cityCount = cities.filter(function (d) { return !d.hidden; }).length;
-    if (count) count.textContent = ids.length + ' ' + plural(ids.length, 'punkt', 'punkty', 'punktów') + ' w ' + cityCount + ' ' + plural(cityCount, 'miejscowości', 'miejscowościach', 'miejscowościach');
+    if (count) count.textContent = ids.length + ' ' + plural(ids.length, 'punkt', 'punkty', 'punktów') + ' w ' + cityCount + ' ' + plural(cityCount, unitOne, unitMany, unitMany);
     return { ids: ids, q: q };
   }
 
@@ -145,6 +147,7 @@
           return L.divIcon({ html: '<span>' + n + '</span>', className: 'fs-cluster' + (n > 9 ? ' fs-cluster-big' : ''), iconSize: [40, 40] });
         }
       });
+      if (onlyCity) rows = rows.filter(function (p) { return p.c === onlyCity; });
       rows.forEach(function (p) {
         data[p.id] = p;
         var m = L.marker([p.a, p.o], { icon: icon(p.t), title: p.c + ' – ' + p.n, alt: p.c + ' – ' + p.n, keyboard: true });
@@ -153,6 +156,7 @@
       });
       map.addLayer(cluster);
       apply(false);
+      if (onlyCity && rows.length) map.fitBounds(L.latLngBounds(rows.map(function (p) { return [p.a, p.o]; })).pad(0.05));
       map.once('focus click', function () { map.scrollWheelZoom.enable(); });
       el.classList.add('is-ready');
       if (pending !== null) { showOnMap(pending); pending = null; }
