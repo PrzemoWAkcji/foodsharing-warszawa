@@ -36,13 +36,21 @@
 .fs-popup strong{display:block;font:700 20px/1.15 'Barlow Semi Condensed',sans-serif;margin:3px 0 6px}
 .fs-popup p{margin:0 0 8px!important;font-size:14px;line-height:1.45}
 .fs-popup-links{display:flex;gap:14px}
+.fs-popup-photo-link{display:block;margin:-2px 0 10px}
+.fs-popup-photo{display:block;width:100%;height:150px;object-fit:cover;border-radius:4px;background:#e3ead9}
+.fs-popup-addr{display:block;font-size:14px;font-weight:700;margin-bottom:2px}
+.fs-popup-hours{display:block;font-size:14px;font-weight:700;color:var(--green-dark);margin-bottom:6px}
 .fs-popup-links a{color:var(--green-dark)!important;font-weight:800;font-size:14px}
 .leaflet-container a.leaflet-popup-close-button{width:28px;height:28px;font-size:22px}
 .fs-cities .district summary{font-size:22px}
 .fs-city-note{margin:0 8px 10px;font-size:15px}
 .fs-city-note a{color:var(--green-dark);font-weight:800}
 .fs-place-list{list-style:none;margin:0 0 14px;padding:0 8px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 26px}
-.fs-place{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-top:1px solid #dfe8d9}
+.fs-place{display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:16px;padding:14px 0;border-top:1px solid #dfe8d9;align-items:start}
+.fs-place-photo{width:96px;height:96px;object-fit:cover;border-radius:4px;background:#e3ead9;display:block}
+.fs-place-nophoto{display:grid;place-items:center;color:#9fb894;font-size:34px}
+.fs-addr{display:block;font-size:14px;font-weight:700;color:#3f4a3a;margin-top:2px}
+.fs-hours{display:block;font-size:14px;color:var(--green-dark);font-weight:700;margin-top:3px}
 .fs-place strong{display:block;font-size:16px;line-height:1.3}
 .fs-place p{margin:4px 0 0;font-size:14px;line-height:1.5;color:#5d6457}
 .fs-type{display:inline-block;margin-top:4px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--green-dark)}
@@ -57,4 +65,4 @@
 .fs-report p{font-size:18px;margin:0 0 18px}
 .fs-report a{color:#fff;font-weight:800}
 @media(max-width:900px){.fs-place-list{grid-template-columns:1fr}}
-@media(max-width:760px){.fs-map-page{padding:50px 0 70px}.fs-map-page h1{font-size:48px;letter-spacing:-2px}.fs-stats{margin-top:22px}.fs-type-filter{flex-direction:column;gap:8px}#fs-map{height:62vh;min-height:340px}.fs-report-grid{display:block}.fs-report-grid>div+div{margin-top:28px}.fs-place{flex-direction:column;gap:8px}.fs-place-actions{flex-direction:row;align-items:center;gap:22px}}
+@media(max-width:760px){.fs-map-page{padding:50px 0 70px}.fs-map-page h1{font-size:48px;letter-spacing:-2px}.fs-stats{margin-top:22px}.fs-type-filter{flex-direction:column;gap:8px}#fs-map{height:62vh;min-height:340px}.fs-report-grid{display:block}.fs-report-grid>div+div{margin-top:28px}.fs-place{grid-template-columns:80px minmax(0,1fr);gap:8px 14px}.fs-place-photo{width:80px;height:80px}.fs-place-actions{grid-column:2;flex-direction:row;align-items:center;gap:22px}}

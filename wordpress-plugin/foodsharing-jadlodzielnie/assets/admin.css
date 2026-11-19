@@ -1,0 +1,12 @@
+.fsj-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 18px}
+.fsj-grid p{margin:8px 0}
+.fsj-grid label{display:block;margin-bottom:4px}
+.fsj-grid input[type=text],.fsj-grid select,.fsj-grid textarea{width:100%}
+.fsj-wide{grid-column:1/-1}
+.fsj-h{margin:22px 0 4px;font-size:14px}
+#fsj-map{height:360px;border:1px solid #c3c4c7;margin:8px 0 6px;z-index:1}
+#fsj-geo-status{margin-left:8px;color:#50575e}
+.column-fsj_photo{width:70px}.column-fsj_photo img{width:60px;height:60px;object-fit:cover;border-radius:3px}
+.column-fsj_hours{width:18%}.column-fsj_state{width:120px}
+.fsj-warn{color:#b32d2e;font-weight:600}.fsj-ok{color:#007017}.fsj-paused{color:#8c8f94}.fsj-nophoto{color:#8c8f94}
+@media(max-width:782px){.fsj-grid{grid-template-columns:1fr}}

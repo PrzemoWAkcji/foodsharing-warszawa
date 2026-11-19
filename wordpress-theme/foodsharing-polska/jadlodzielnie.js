@@ -26,10 +26,20 @@
   }
   function popup(p) {
     var box = node('div', 'fs-popup');
+    if (p.img) {
+      var img = node('img', 'fs-popup-photo');
+      img.src = p.img; img.alt = 'Jadłodzielnia: ' + p.c + ', ' + p.n; img.loading = 'lazy';
+      if (p.imgw && p.imgh) { img.width = p.imgw; img.height = p.imgh; }
+      if (p.full) {
+        var big = node('a', 'fs-popup-photo-link'); big.href = p.full; big.target = '_blank'; big.rel = 'noopener';
+        big.setAttribute('aria-label', 'Powiększ zdjęcie'); big.appendChild(img); box.appendChild(big);
+      } else box.appendChild(img);
+    }
     box.appendChild(node('span', 'fs-popup-city', p.c + (p.r ? ' · ' + p.r : '')));
     box.appendChild(node('strong', '', p.n));
+    if (p.ad && p.ad !== p.n) box.appendChild(node('span', 'fs-popup-addr', p.ad));
+    box.appendChild(node('span', 'fs-popup-hours', p.h ? '◷ ' + p.h : 'Godziny: brak danych'));
     if (p.d) box.appendChild(node('p', '', p.d));
-    else if (p.s === '19115') box.appendChild(node('p', '', 'Punkt z miejskiego wykazu Warszawa 19115. Godziny sprawdź przed wizytą.'));
     var links = node('div', 'fs-popup-links');
     var route = node('a', '', 'Trasa ↗');
     route.href = 'https://www.google.com/maps/dir/?api=1&destination=' + p.a + ',' + p.o;
@@ -138,7 +148,7 @@
       rows.forEach(function (p) {
         data[p.id] = p;
         var m = L.marker([p.a, p.o], { icon: icon(p.t), title: p.c + ' – ' + p.n, alt: p.c + ' – ' + p.n, keyboard: true });
-        m.bindPopup(function () { return popup(p); }, { maxWidth: 280 });
+        m.bindPopup(function () { return popup(p); }, { maxWidth: 290, minWidth: 240, autoPanPadding: [20, 20] });
         markers[p.id] = m;
       });
       map.addLayer(cluster);
