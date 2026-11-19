@@ -96,7 +96,7 @@ def stats(pts):
 def build_static(pts, list_html: str):
     n, c = stats(pts)
     page = (ROOT / 'tools' / 'jadlodzielnie-static.html').read_text(encoding='utf-8')
-    page = page.replace('{{LIST}}', list_html).replace('{{COUNT}}', str(n)).replace('{{CITIES}}', str(c)).replace('{{UPDATED}}', UPDATED)
+    page = page.replace('{{LIST}}', list_html).replace('{{COUNT}}', str(n)).replace('{{CITIES}}', str(c)).replace('{{UPDATED}}', UPDATED).replace('{{COUNT_WORD}}', plural(n, 'punkt', 'punkty', 'punktów'))
     out = ROOT / 'jadlodzielnie' / 'index.html'
     out.parent.mkdir(exist_ok=True)
     out.write_text(page, encoding='utf-8')
@@ -115,7 +115,7 @@ def main():
     n, c = stats(pts)
     (parts / 'jadlodzielnie-stats.json').write_text(json.dumps({'count': n, 'cities': c, 'updated': UPDATED}), encoding='utf-8')
     build_static(pts, render_list(pts, '../warszawa/'))
-    print(f'{n} punktów, {c} miejscowości')
+    print(f"{n} {plural(n, 'punkt', 'punkty', 'punktów')}, {c} miejscowości")
 
 
 if __name__ == '__main__':

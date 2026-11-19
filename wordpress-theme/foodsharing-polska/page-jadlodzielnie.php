@@ -5,17 +5,21 @@ $fs_uri = get_template_directory_uri();
 $fs_stats = json_decode((string) file_get_contents($fs_dir . '/parts/jadlodzielnie-stats.json'), true) ?: ['count' => 0, 'cities' => 0, 'updated' => ''];
 $fs_list = (string) file_get_contents($fs_dir . '/parts/jadlodzielnie-lista.html');
 $fs_list = str_replace('href="/warszawa/"', 'href="' . esc_url(home_url('/warszawa/')) . '"', $fs_list);
+$fs_plural = static function (int $n, string $one, string $few, string $many): string {
+    if ($n === 1) { return $one; }
+    return ($n % 10 >= 2 && $n % 10 <= 4 && ($n % 100 < 12 || $n % 100 > 14)) ? $few : $many;
+};
 get_header();
 ?>
 <main id="main">
   <section class="fs-map-page" aria-labelledby="fs-title"><div class="wrap">
     <div class="directory-header"><div><span class="label">Mapa jadłodzielni</span><h1 id="fs-title">Jadłodzielnie <em>w Polsce.</em></h1><p>Lodówki i szafki, w których możesz zostawić jedzenie albo się nim poczęstować. Wpisz miasto lub ulicę, a mapa pokaże punkty w okolicy.</p></div>
-      <div class="fs-stats"><div><strong><?php echo (int) $fs_stats['count']; ?></strong><span>punktów</span></div><div><strong><?php echo (int) $fs_stats['cities']; ?></strong><span>miejscowości</span></div></div></div>
+      <div class="fs-stats"><div><strong><?php echo (int) $fs_stats['count']; ?></strong><span><?php echo esc_html($fs_plural((int) $fs_stats['count'], 'punkt', 'punkty', 'punktów')); ?></span></div><div><strong><?php echo (int) $fs_stats['cities']; ?></strong><span>miejscowości</span></div></div></div>
     <div class="directory-controls fs-controls">
       <label for="fs-search">Szukaj miasta lub adresu</label><input id="fs-search" type="search" placeholder="Np. Kraków lub Grójecka" autocomplete="off">
       <fieldset class="fs-type-filter"><legend>Rodzaj punktu</legend><label><input type="checkbox" value="foodsharing" checked> <span class="fs-dot fs-dot-f" aria-hidden="true"></span> Foodsharing</label><label><input type="checkbox" value="inne" checked> <span class="fs-dot fs-dot-i" aria-hidden="true"></span> Podobne inicjatywy</label></fieldset>
       <button type="button" class="fs-near" id="fs-near">⌖ Najbliżej mnie</button>
-      <span id="fs-count" role="status"><?php echo (int) $fs_stats['count']; ?> punktów</span>
+      <span id="fs-count" role="status"><?php echo (int) $fs_stats['count'] . ' ' . esc_html($fs_plural((int) $fs_stats['count'], 'punkt', 'punkty', 'punktów')) . ' w ' . (int) $fs_stats['cities'] . ' ' . ((int) $fs_stats['cities'] === 1 ? 'miejscowości' : 'miejscowościach'); ?></span>
       <p class="fs-near-status" id="fs-near-status" aria-live="polite"></p>
     </div>
     <div class="fs-map-shell"><div id="fs-map" role="region" aria-label="Mapa jadłodzielni w Polsce" data-src="<?php echo esc_url($fs_uri . '/assets/jadlodzielnie.json?v=' . filemtime($fs_dir . '/assets/jadlodzielnie.json')); ?>"></div></div>
