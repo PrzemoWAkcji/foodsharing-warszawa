@@ -11,3 +11,4 @@
 - W spisie zachować wyraźne odstępy między dzielnicami i adresami; na telefonie link do trasy umieszczać pod adresem.
 - Przycisk mapy używa publicznego linku udostępniania z miejskiego serwisu mapowego (`7848b568-32c7-4ee6-97d4-949eebce00ff?p=true`), w którym włączona jest tylko warstwa „Jadłodzielnie”. Widok sprawdzono w sesji incognito.
 - W stopkach strony głównej i podstrony Warszawy podawać autorstwo: „Projekt i wykonanie: IT TIMING”; nazwę firmy linkować do `https://it-timing.eu/` w nowej karcie.
+- Motyw WordPress przygotowany do przyszłego wdrożenia znajduje się w `wordpress-theme/foodsharing-polska/`, a instalacyjny ZIP w `wordpress-theme/foodsharing-polska.zip`. Statyczny podgląd GitHub Pages pozostaje niezależny. Przed aktywacją na foodsharing.pl sprawdzić treści i strukturę WordPress przez Novamira, zrobić podgląd oraz kopię zapasową.
